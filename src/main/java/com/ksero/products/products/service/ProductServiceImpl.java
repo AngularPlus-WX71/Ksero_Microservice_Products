@@ -68,6 +68,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ResponseEntity<?> delete(Long id) {
+
+        if (!repository.existsById(id))
+            throw new ResourceNotFoundException(ENTITY, id);
+
         return repository.findById(id).map(
                         product -> {
                             repository.delete(product);
