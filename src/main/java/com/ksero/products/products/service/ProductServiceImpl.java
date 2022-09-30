@@ -57,10 +57,10 @@ public class ProductServiceImpl implements ProductService {
             throw new ResourceNotFoundException(ENTITY, id);
 
         return repository.findById(id).map(
-                product -> repository.save(product
-                        .withName(product.getName())
-                        .withDescription(product.getDescription())
-                        .withPrice(product.getPrice())
+                product -> repository.save(request
+                        .withName(request.getName())
+                        .withDescription(request.getDescription())
+                        .withPrice(request.getPrice())
                 )).orElseThrow(
                 ()->new ResourceNotFoundException(ENTITY, id)
         );
