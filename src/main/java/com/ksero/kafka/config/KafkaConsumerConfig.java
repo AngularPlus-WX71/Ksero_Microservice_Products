@@ -28,7 +28,9 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(JsonSerializer.TYPE_MAPPINGS,"com.ksero:com.ksero.kafka.events.Event");
 
+
         final JsonDeserializer<Event<?>> jsonDeserializer = new JsonDeserializer<>();
+        jsonDeserializer.addTrustedPackages("*");
 
         return new DefaultKafkaConsumerFactory(props, new StringDeserializer(), jsonDeserializer);
     }

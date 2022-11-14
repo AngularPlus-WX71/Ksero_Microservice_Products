@@ -3,7 +3,7 @@ package com.ksero.kafka.service;
 import com.ksero.kafka.events.Event;
 import com.ksero.kafka.events.EventType;
 import com.ksero.products.domain.service.ProductService;
-import com.ksero.security.events.UserDeletedEvent;
+import com.ksero.kafka.events.WholesalerDeletedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -17,18 +17,18 @@ public class UserEventsService {
     private ProductService service;
 
     @KafkaListener(
-            topics = "${topic.user.name:users}",
+            topics = "${topic.user.name:wholesalers}",
             containerFactory = "kafkaListenerContainerFactory",
-            groupId = "grupo1")
+            groupId = "products")
     public void consumer(Event<?> event) {
-        if (event.getClass().isAssignableFrom(UserDeletedEvent.class)) {
-            UserDeletedEvent userDeletedEvent = (UserDeletedEvent) event;
+        if (event.getClass().isAssignableFrom(WholesalerDeletedEvent.class)) {
+            WholesalerDeletedEvent wholesalerDeletedEvent = (WholesalerDeletedEvent) event;
             log.info("Received Customer deleted event .... with Id={}, data={}",
-                    userDeletedEvent.getId(),
-                    userDeletedEvent.getData().toString());
+                    wholesalerDeletedEvent.getId(),
+                    wholesalerDeletedEvent.getData().getUsername());
 
-            if(userDeletedEvent.getType() == EventType.DELETED){
-                service.deleteByUserId(userDeletedEvent.getData().getId());
+            if(wholesalerDeletedEvent.getType() == EventType.DELETED){
+                service.deleteByUserId(wholesalerDeletedEvent.getData().getId());
             }
         }
     }
