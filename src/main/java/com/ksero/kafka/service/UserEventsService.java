@@ -20,10 +20,10 @@ public class UserEventsService {
             topics = "${topic.user.name:wholesalers}",
             containerFactory = "kafkaListenerContainerFactory",
             groupId = "products")
-    public void consumer(Event<?> event) {
+    public void wholesaler(Event<?> event) {
         if (event.getClass().isAssignableFrom(WholesalerDeletedEvent.class)) {
             WholesalerDeletedEvent wholesalerDeletedEvent = (WholesalerDeletedEvent) event;
-            log.info("Received Customer deleted event .... with Id={}, data={}",
+            log.info("Received wholesaler deleted event .... with Id={}, data={}",
                     wholesalerDeletedEvent.getId(),
                     wholesalerDeletedEvent.getData().getUsername());
 

@@ -22,12 +22,12 @@ logging:
 #        dialect: org.hibernate.dialect.PostgreSQLDialect
 spring:
   datasource:
-    url: postgres://jblkknniowgilz:66a65a3dc0699aa679d3e48b1747e4f527ea5c6d3f96bf7e319b6b680e1114cf@ec2-54-91-223-99.compute-1.amazonaws.com:5432/ddoepqol2dn90a
-    username: jblkknniowgilz
-    password: 66a65a3dc0699aa679d3e48b1747e4f527ea5c6d3f96bf7e319b6b680e1114cf
+    url: jdbc:mysql://localhost:3306/products_ksero?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+    username: root
+    password: M!r#P6K$
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect

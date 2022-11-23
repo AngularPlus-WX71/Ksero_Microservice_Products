@@ -19,7 +19,7 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfig {
 
-    private final String bootstrapAddress = "localhost:9092";
+    private final String bootstrapAddress = "ksero.eastus.cloudapp.azure.com:9092";
 
     @Bean
     public ConsumerFactory<String, Event<?>> consumerFactory() {
