@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Entity
 @Table(name = "products")
-public class Product extends AuditModel {
+public class Product{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
