@@ -32,6 +32,6 @@ public class Product{
     private Double price;
 
     @NotNull
-    private Long wholesalerId;
+    private Long userId;
 
 }

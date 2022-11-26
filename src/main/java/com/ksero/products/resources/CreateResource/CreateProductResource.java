@@ -24,6 +24,6 @@ public class CreateProductResource {
     private Double price;
 
     @NotNull
-    private Long wholesalerId;
+    private Long userId;
 
 }
